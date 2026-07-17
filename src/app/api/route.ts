@@ -11,7 +11,7 @@ export async function GET() {
   );
 
   return NextResponse.json({
-    name: "Академия Дуплея API",
+    name: "MOBA академия API",
     version: "1.0.0",
     stats: {
       courses: courses.length,

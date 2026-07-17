@@ -41,7 +41,7 @@ export default function Image() {
           </div>
           <div>
             <div style={{ fontSize: '48px', fontWeight: 'bold' }}>
-              Академия Дуплея
+              MOBA академия
             </div>
             <div style={{ fontSize: '24px', opacity: 0.9 }}>
               Платформа самостоятельного обучения

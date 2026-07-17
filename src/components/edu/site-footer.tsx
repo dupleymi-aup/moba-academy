@@ -1,7 +1,16 @@
 'use client'
 
 import * as React from 'react'
-import { GraduationCap, Heart, Mail, Send, Linkedin } from 'lucide-react'
+import {
+  Heart,
+  Github,
+  Play,
+  MessageCircle,
+  Fingerprint,
+  GraduationCap,
+  School,
+  Crown,
+} from 'lucide-react'
 import { author } from '@/lib/courses-data'
 
 export function SiteFooter() {
@@ -17,7 +26,7 @@ export function SiteFooter() {
               </div>
               <div>
                 <div className="text-base font-semibold">
-                  Академия Дуплея
+                  MOBA академия
                 </div>
                 <div className="text-xs text-muted-foreground">
                   Платформа самостоятельного обучения
@@ -44,36 +53,32 @@ export function SiteFooter() {
           <div className="space-y-3">
             <h4 className="text-sm font-semibold">Контакты</h4>
             <ul className="space-y-1.5">
-              {author.contacts.map((c) => (
-                <li key={c.label}>
-                  <a
-                    href={
-                      c.label === 'Email'
-                        ? `mailto:${c.value}`
-                        : c.label === 'Telegram'
-                          ? `https://t.me/${c.value.replace('@', '')}`
-                          : `https://${c.value}`
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {c.label === 'Email' && <Mail className="h-3.5 w-3.5" />}
-                    {c.label === 'Telegram' && <Send className="h-3.5 w-3.5" />}
-                    {c.label === 'LinkedIn' && (
-                      <Linkedin className="h-3.5 w-3.5" />
-                    )}
-                    {c.value}
-                  </a>
-                </li>
-              ))}
+              {author.contacts.map((c) => {
+                const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+                  Github, Play, MessageCircle, Fingerprint, GraduationCap, School, Crown,
+                }
+                const Icon = iconMap[c.icon] ?? GraduationCap
+                return (
+                  <li key={c.label}>
+                    <a
+                      href={c.href ?? `https://${c.value}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <Icon className="h-3.5 w-3.5" />
+                      {c.value}
+                    </a>
+                  </li>
+                )
+              })}
             </ul>
           </div>
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row">
           <p>
-            © {new Date().getFullYear()} Академия Дуплея · {author.name}
+            © {new Date().getFullYear()} MOBA академия · {author.name}
           </p>
           <p className="flex items-center gap-1.5">
             Сделано с <Heart className="h-3 w-3 fill-rose-500 text-rose-500" /> для

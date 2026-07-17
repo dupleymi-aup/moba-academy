@@ -46,7 +46,7 @@ export function NotesPanel({ onOpenCourse }: NotesPanelProps) {
       grouped.set(n.courseId, existing)
     }
 
-    let md = '# Заметки — Академия Дуплея\n\n'
+    let md = '# Заметки — MOBA академия\n\n'
     md += `> Экспортировано ${new Date().toLocaleDateString('ru-RU')}\n\n---\n\n`
 
     for (const [courseId, courseNotes] of grouped) {

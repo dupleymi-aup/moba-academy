@@ -4,13 +4,17 @@ import * as React from 'react'
 import { motion } from 'framer-motion'
 import {
   Mail,
-  Send,
-  Linkedin,
   GraduationCap,
   Target,
   Heart,
   Sparkles,
   Quote,
+  Github,
+  Play,
+  MessageCircle,
+  Fingerprint,
+  School,
+  Crown,
 } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
@@ -19,8 +23,13 @@ import { author, testimonials } from '@/lib/courses-data'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Mail,
-  Send,
-  Linkedin,
+  Github,
+  Play,
+  MessageCircle,
+  Fingerprint,
+  GraduationCap,
+  School,
+  Crown,
 }
 
 export function AuthorSection() {
@@ -75,13 +84,7 @@ export function AuthorSection() {
                   return (
                     <a
                       key={c.label}
-                      href={
-                        c.label === 'Email'
-                          ? `mailto:${c.value}`
-                          : c.label === 'Telegram'
-                            ? `https://t.me/${c.value.replace('@', '')}`
-                            : `https://${c.value}`
-                      }
+                      href={c.href ?? `https://${c.value}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium transition-colors hover:bg-secondary"

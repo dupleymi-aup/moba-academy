@@ -176,7 +176,7 @@ export function CertificateModal({ course, open, onClose }: CertificateModalProp
                     <div className="flex items-center gap-2 rounded-full bg-orange-500/10 px-4 py-1.5 backdrop-blur">
                       <Sparkles className="h-4 w-4 text-orange-500" />
                       <span className="text-xs font-medium uppercase tracking-wider text-orange-700 dark:text-orange-300">
-                        Академия Дуплея
+                        MOBA академия
                       </span>
                     </div>
                   </div>
@@ -198,7 +198,7 @@ export function CertificateModal({ course, open, onClose }: CertificateModalProp
                   {/* Student name */}
                   <div className="mt-5">
                     <p className="text-xl font-semibold text-orange-600 sm:text-2xl">
-                      Слушатель Академии Дуплея
+                      Слушатель Академии Дуплей
                     </p>
                     <div className="mx-auto mt-2 h-px w-48 bg-orange-500/30" />
                   </div>
@@ -275,7 +275,7 @@ export function CertificateModal({ course, open, onClose }: CertificateModalProp
                   {/* Bottom note */}
                   <p className="mt-6 text-[10px] text-muted-foreground/70">
                     Сертификат подтверждает самостоятельное прохождение курса на платформе
-                    «Академия Дуплея». Не является государственным документом об образовании.
+                    «MOBA академия». Не является государственным документом об образовании.
                   </p>
                 </div>
               </div>

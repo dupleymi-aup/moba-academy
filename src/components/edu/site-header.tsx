@@ -105,7 +105,7 @@ export function SiteHeader() {
             </div>
             <div className="flex flex-col items-start leading-tight">
               <span className="text-base font-semibold tracking-tight">
-                Академия Дуплея
+                MOBA академия
               </span>
               <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
                 Самообучение

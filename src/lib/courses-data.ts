@@ -308,7 +308,7 @@ export const courses: Course[] = [
             'Кластеризация контента: одна большая pillar-страница и 10-20 поддерживающих статей, ссылающихся на неё. Так формируется топическая авторитетность в глазах Google.',
             'E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) — критерии Google для оценки качества контента. Сайт без указания авторов и их экспертизы теряет позиции в конкурентных нишах.',
             'Линкбилдинг работает, когда контент заслуживает ссылок. «Купить 100 ссылок» — путь к санкциям. «Сделать исследование, на которое сошлются СМИ» — путь к органическому росту.',
-            'Дистрибуция контента: email-рассылка, соцсети, партнерства,嘉宾-посты, Pinterest, YouTube. Без дистрибуции даже лучший материал увидят 100 человек.',
+            'Дистрибуция контента: email-рассылка, соцсети, партнерства, гостевые посты, Pinterest, YouTube. Без дистрибуции даже лучший материал увидят 100 человек.',
           ],
           practicalTask:
             'Выберите одну pillar-тему для своего бизнеса. Составьте список из 10 поддерживающих статей. Какая из них даст самый быстрый трафик? С какой вы начнёте на следующей неделе?',
@@ -1182,9 +1182,13 @@ export const author = {
     },
   ],
   contacts: [
-    { label: 'Email', value: 'dupley.edu@example.com', icon: 'Mail' },
-    { label: 'Telegram', value: '@dupley_mba', icon: 'Send' },
-    { label: 'LinkedIn', value: 'in/dupley-maxim', icon: 'Linkedin' },
+    { label: 'GitHub', value: 'github.com/QuadDarv1ne', icon: 'Github', href: 'https://github.com/QuadDarv1ne' },
+    { label: 'Rutube', value: 'rutube.ru/channel/4218729', icon: 'Play', href: 'https://rutube.ru/channel/4218729/' },
+    { label: 'VK', value: 'vk.com/maestro7it', icon: 'MessageCircle', href: 'https://vk.com/maestro7it' },
+    { label: 'ORCID', value: '0009-0007-7605-539X', icon: 'Fingerprint', href: 'https://orcid.org/0009-0007-7605-539X' },
+    { label: 'Stepik', value: 'stepik.org/users/150943726', icon: 'GraduationCap', href: 'https://stepik.org/users/150943726/teach' },
+    { label: 'Maestro7IT', value: 'school-maestro7it.ru', icon: 'School', href: 'https://school-maestro7it.ru/' },
+    { label: 'Chess', value: 'worldchess.com/profile/1094367', icon: 'Crown', href: 'https://worldchess.com/profile/1094367' },
   ],
 }
 
