@@ -21,6 +21,7 @@ import { Badge } from '@/components/ui/badge'
 import { courses, type Course } from '@/lib/courses-data'
 import { achievements } from '@/lib/quizzes-data'
 import { useLearningStore } from '@/lib/learning-store'
+import { calculateStreak } from '@/lib/utils'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -94,33 +95,7 @@ export function Dashboard({ onOpenCourse, onOpenCertificate }: DashboardProps) {
   const coursesCompletedCount = completedCoursesList.length
 
   // Стрик
-  const todayKey = (d: Date) => {
-    const y = d.getFullYear()
-    const m = String(d.getMonth() + 1).padStart(2, '0')
-    const day = String(d.getDate()).padStart(2, '0')
-    return `${y}-${m}-${day}`
-  }
-  let streak = 0
-  const today = new Date()
-  const todayActivity = activityLog[todayKey(today)]
-  const hasToday =
-    todayActivity &&
-    todayActivity.lessonsCompleted +
-      todayActivity.quizzesPassed +
-      todayActivity.notesCreated >
-      0
-  const cursor = new Date(today)
-  if (!hasToday) cursor.setDate(cursor.getDate() - 1)
-  while (true) {
-    const key = todayKey(cursor)
-    const day = activityLog[key]
-    const hasActivity =
-      day && day.lessonsCompleted + day.quizzesPassed + day.notesCreated > 0
-    if (hasActivity) {
-      streak += 1
-      cursor.setDate(cursor.getDate() - 1)
-    } else break
-  }
+  const streak = calculateStreak(activityLog)
 
   // Метрики для ачивок
   const metrics = {

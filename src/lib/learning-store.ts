@@ -2,6 +2,7 @@
 
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { dateKey } from './utils'
 
 export type Note = {
   id: string
@@ -75,11 +76,7 @@ type LearningState = {
 
 // Helper: получить текущую дату в формате YYYY-MM-DD
 function todayKey(): string {
-  const d = new Date()
-  const y = d.getFullYear()
-  const m = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
-  return `${y}-${m}-${day}`
+  return dateKey(new Date())
 }
 
 function ensureActivityDay(log: Record<string, ActivityDay>, dateKey: string): ActivityDay {

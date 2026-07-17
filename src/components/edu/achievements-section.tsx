@@ -24,7 +24,7 @@ import {
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { cn } from '@/lib/utils'
+import { cn, calculateStreak } from '@/lib/utils'
 import { courses } from '@/lib/courses-data'
 import { achievements } from '@/lib/quizzes-data'
 import { useLearningStore } from '@/lib/learning-store'
@@ -75,33 +75,7 @@ export function AchievementsSection() {
     // Стрик
     let streak = 0
     if (mounted) {
-      const today = new Date()
-      const todayKey = (d: Date) => {
-        const y = d.getFullYear()
-        const m = String(d.getMonth() + 1).padStart(2, '0')
-        const day = String(d.getDate()).padStart(2, '0')
-        return `${y}-${m}-${day}`
-      }
-      const todayActivity = activityLog[todayKey(today)]
-      const hasToday =
-        todayActivity &&
-        todayActivity.lessonsCompleted +
-          todayActivity.quizzesPassed +
-          todayActivity.notesCreated >
-          0
-      const cursor = new Date(today)
-      if (!hasToday) cursor.setDate(cursor.getDate() - 1)
-      while (true) {
-        const key = todayKey(cursor)
-        const day = activityLog[key]
-        const hasActivity =
-          day &&
-          day.lessonsCompleted + day.quizzesPassed + day.notesCreated > 0
-        if (hasActivity) {
-          streak += 1
-          cursor.setDate(cursor.getDate() - 1)
-        } else break
-      }
+      streak = calculateStreak(activityLog)
     }
 
     // Всего минут обучения

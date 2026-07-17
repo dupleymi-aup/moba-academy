@@ -4,16 +4,8 @@ import * as React from 'react'
 import { Flame, TrendingUp } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { cn } from '@/lib/utils'
+import { cn, dateKey, calculateStreak } from '@/lib/utils'
 import { useLearningStore, type ActivityDay } from '@/lib/learning-store'
-
-// Получить ключ даты YYYY-MM-DD
-function dateKey(d: Date): string {
-  const y = d.getFullYear()
-  const m = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
-  return `${y}-${m}-${day}`
-}
 
 // Получить уровень активности для цвета
 function getLevel(day: ActivityDay | undefined): number {
@@ -51,43 +43,6 @@ const monthLabels = [
 ]
 
 const dayLabels = ['Пн', '', 'Ср', '', 'Пт', '', 'Вс']
-
-// Вычислить текущий стрик
-function calculateStreak(activityLog: Record<string, ActivityDay>): number {
-  const today = new Date()
-  let streak = 0
-  let cursor = new Date(today)
-
-  // Если сегодня нет активности — начинаем со вчерашнего дня
-  const todayActivity = activityLog[dateKey(today)]
-  const hasActivityToday =
-    todayActivity &&
-    todayActivity.lessonsCompleted +
-      todayActivity.quizzesPassed +
-      todayActivity.notesCreated >
-      0
-
-  if (!hasActivityToday) {
-    cursor.setDate(cursor.getDate() - 1)
-  }
-
-  // Идём назад, пока есть активность
-  while (true) {
-    const key = dateKey(cursor)
-    const day = activityLog[key]
-    const hasActivity =
-      day &&
-      day.lessonsCompleted + day.quizzesPassed + day.notesCreated > 0
-    if (hasActivity) {
-      streak += 1
-      cursor.setDate(cursor.getDate() - 1)
-    } else {
-      break
-    }
-  }
-
-  return streak
-}
 
 export function ActivityHeatmap() {
   const activityLog = useLearningStore((s) => s.activityLog)

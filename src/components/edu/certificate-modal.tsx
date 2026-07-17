@@ -10,8 +10,7 @@ import {
   CheckCircle2,
   Sparkles,
 } from 'lucide-react'
-import { type Course } from '@/lib/courses-data'
-import { author } from '@/lib/courses-data'
+import { type Course, author } from '@/lib/courses-data'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
@@ -91,7 +90,7 @@ export function CertificateModal({ course, open, onClose }: CertificateModalProp
 
   if (!course) return null
 
-  const certId = `DUP-${course.id.toUpperCase()}-${new Date().getFullYear()}`
+  const certId = `MOBA-${course.id.toUpperCase()}-${new Date().getFullYear()}`
   const completionDate = new Date().toLocaleDateString('ru-RU', {
     day: 'numeric',
     month: 'long',

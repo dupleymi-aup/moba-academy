@@ -5,9 +5,8 @@ import { NotebookPen, Trash2, Edit3, BookOpen, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { courses } from '@/lib/courses-data'
+import { courses, type Course } from '@/lib/courses-data'
 import { useLearningStore } from '@/lib/learning-store'
-import { type Course } from '@/lib/courses-data'
 import { toast } from 'sonner'
 
 type NotesPanelProps = {

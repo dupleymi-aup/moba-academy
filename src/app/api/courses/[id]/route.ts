@@ -1,8 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { courses } from "@/lib/courses-data";
 
-export const dynamic = "force-static";
-
 export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }

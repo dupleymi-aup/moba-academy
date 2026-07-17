@@ -617,7 +617,7 @@ export const courses: Course[] = [
             'WIP-лимит — самое контринтуитивное правило Kanban. Кажется, что чем больше задач в работе, тем больше результата. На практике: высокая загрузка ведёт к многозадачности, переключениям и падению пропускной способности на 30-50%.',
             'Закон Литтла: Lead Time = WIP / Throughput. Чтобы сократить время прохождения, нужно либо уменьшить WIP, либо увеличить пропускную способность. Первое обычно дешевле и быстрее.',
             'Кумулятивная диаграмма потока (CFD) показывает накопленное количество задач по этапам со временем. Расширяющаяся «полоса» в середине — признак узкого места.',
-            'Классы обслуживания (Class of Service): standard, fixed delivery date, expedite, intangible. Помогают приоритизировать без的政治ности.',
+            'Классы обслуживания (Class of Service): standard, fixed delivery date, expedite, intangible. Помогают приоритизировать без политики.',
             'KanbanCadence: replenishment meeting, delivery planning, service delivery review, operations review, risk review, strategy review. Меньше церемоний, чем у Scrum, но регулярных встреч всё равно много.',
           ],
           practicalTask:
@@ -630,7 +630,7 @@ export const courses: Course[] = [
       },
       {
         id: 'pm-l4',
-        title: 'Критическая цепь:项目管理 Голдратта',
+        title: 'Критическая цепь Голдратта',
         duration: 40,
         content: {
           intro:
