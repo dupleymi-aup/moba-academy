@@ -197,7 +197,7 @@ export function CertificateModal({ course, open, onClose }: CertificateModalProp
                   {/* Student name */}
                   <div className="mt-5">
                     <p className="text-xl font-semibold text-orange-600 sm:text-2xl">
-                      Слушатель Академии Дуплей
+                      Слушатель MOBA академии
                     </p>
                     <div className="mx-auto mt-2 h-px w-48 bg-orange-500/30" />
                   </div>

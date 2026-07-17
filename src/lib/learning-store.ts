@@ -50,27 +50,17 @@ type LearningState = {
   quizResults: Record<string, QuizResult>
   // Активность по дням (YYYY-MM-DD → статистика)
   activityLog: Record<string, ActivityDay>
-  // Дата последнего захода
-  lastVisited: number | null
-  // Активный таб
-  activeTab: string
 
   // Actions
   toggleLessonComplete: (courseId: string, lessonId: string, durationMinutes?: number) => void
-  isLessonComplete: (courseId: string, lessonId: string) => boolean
   toggleCourseBookmark: (courseId: string) => void
   isCourseBookmarked: (courseId: string) => boolean
   toggleLessonBookmark: (courseId: string, lessonId: string) => void
-  isLessonBookmarked: (courseId: string, lessonId: string) => boolean
   addNote: (note: Omit<Note, 'id' | 'createdAt' | 'updatedAt'>) => void
   updateNote: (id: string, content: string) => void
   deleteNote: (id: string) => void
-  setLastVisited: (ts: number) => void
-  setActiveTab: (tab: string) => void
   getCourseProgress: (courseId: string, totalLessons: number) => number
   saveQuizResult: (courseId: string, lessonId: string, score: number, total: number) => void
-  getQuizResult: (courseId: string, lessonId: string) => QuizResult | undefined
-  logActivity: (type: 'lesson' | 'quiz' | 'note', minutes?: number) => void
   resetAll: () => void
 }
 
@@ -100,8 +90,6 @@ export const useLearningStore = create<LearningState>()(
       notes: [],
       quizResults: {},
       activityLog: {},
-      lastVisited: null,
-      activeTab: 'catalog',
 
       toggleLessonComplete: (courseId, lessonId, durationMinutes = 0) => {
         const key = `${courseId}:${lessonId}`
@@ -122,11 +110,6 @@ export const useLearningStore = create<LearningState>()(
           }
           return { completedLessons: newCompleted, activityLog: newLog }
         })
-      },
-
-      isLessonComplete: (courseId, lessonId) => {
-        const key = `${courseId}:${lessonId}`
-        return get().completedLessons[key] === true
       },
 
       toggleCourseBookmark: (courseId) => {
@@ -162,12 +145,6 @@ export const useLearningStore = create<LearningState>()(
         }
       },
 
-      isLessonBookmarked: (courseId, lessonId) => {
-        return get().lessonBookmarks.some(
-          (b) => b.courseId === courseId && b.lessonId === lessonId,
-        )
-      },
-
       addNote: (note) => {
         const id = `note-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
         const now = Date.now()
@@ -197,9 +174,6 @@ export const useLearningStore = create<LearningState>()(
           notes: state.notes.filter((n) => n.id !== id),
         }))
       },
-
-      setLastVisited: (ts) => set({ lastVisited: ts }),
-      setActiveTab: (tab) => set({ activeTab: tab }),
 
       getCourseProgress: (courseId, totalLessons) => {
         if (totalLessons === 0) return 0
@@ -237,25 +211,6 @@ export const useLearningStore = create<LearningState>()(
         })
       },
 
-      getQuizResult: (courseId, lessonId) => {
-        const key = `${courseId}:${lessonId}`
-        return get().quizResults[key]
-      },
-
-      logActivity: (type, minutes = 0) => {
-        set((state) => {
-          const newLog = { ...state.activityLog }
-          const dayKey = todayKey()
-          const day = { ...ensureActivityDay(newLog, dayKey) }
-          if (type === 'lesson') day.lessonsCompleted += 1
-          if (type === 'quiz') day.quizzesPassed += 1
-          if (type === 'note') day.notesCreated += 1
-          day.minutesLearned += minutes
-          newLog[dayKey] = day
-          return { activityLog: newLog }
-        })
-      },
-
       resetAll: () => {
         set({
           completedLessons: {},
@@ -264,7 +219,6 @@ export const useLearningStore = create<LearningState>()(
           notes: [],
           quizResults: {},
           activityLog: {},
-          lastVisited: null,
         })
       },
     }),

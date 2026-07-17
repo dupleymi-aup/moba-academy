@@ -64,6 +64,7 @@ export function SiteFooter() {
                       href={c.href ?? `https://${c.value}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${c.label}: ${c.value}`}
                       className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       <Icon className="h-3.5 w-3.5" />

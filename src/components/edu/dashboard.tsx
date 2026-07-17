@@ -7,7 +7,6 @@ import {
   BookOpen,
   CheckCircle2,
   Flame,
-  Target,
   RotateCcw,
   Clock,
   Trophy,

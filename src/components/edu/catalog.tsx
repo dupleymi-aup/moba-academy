@@ -68,6 +68,7 @@ export function Catalog({ onOpenCourse }: CatalogProps) {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
+                aria-pressed={activeCategory === cat}
                 className={cn(
                   'rounded-full px-3 py-1 text-xs font-medium transition-colors',
                   activeCategory === cat
@@ -80,6 +81,7 @@ export function Catalog({ onOpenCourse }: CatalogProps) {
             ))}
             <button
               onClick={() => setOnlyBookmarked(!onlyBookmarked)}
+              aria-pressed={onlyBookmarked}
               className={cn(
                 'ml-auto rounded-full px-3 py-1 text-xs font-medium transition-colors',
                 onlyBookmarked

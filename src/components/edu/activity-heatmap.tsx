@@ -1,9 +1,8 @@
 'use client'
 
 import * as React from 'react'
-import { Flame, TrendingUp } from 'lucide-react'
+import { Flame } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { cn, dateKey, calculateStreak } from '@/lib/utils'
 import { useLearningStore, type ActivityDay } from '@/lib/learning-store'
 
